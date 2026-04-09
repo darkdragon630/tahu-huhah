@@ -35,6 +35,7 @@ tahu-huhah/
 - **Peta lokasi** — Google Maps embed lokasi usaha
 - **Footer** — info hak cipta
 - **Animasi scroll reveal** — elemen muncul saat di-scroll
+- **Scrollbar tersembunyi** — tampilan lebih bersih, halaman tetap bisa di-scroll
 - **Fully responsive** — tampil baik di HP maupun desktop
 
 ---
