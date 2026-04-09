@@ -105,19 +105,21 @@
     .nav-link { font-size: 0.68rem; padding: 4px 5px; }
   }
 
+  /* HERO */
   .hero {
     min-height: 80vh;
-    background: var(--brown);
+    background: url('asset/produk 1.jpeg') center center / cover no-repeat;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     position: relative; overflow: hidden;
     padding: 100px 20px 60px;
   }
 
+  /* overlay gelap supaya teks tetap terbaca */
   .hero::before {
     content: ''; position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-    pointer-events: none; opacity: 0.4;
+    background: linear-gradient(160deg, rgba(194,24,91,0.75) 0%, rgba(46,21,3,0.72) 100%);
+    pointer-events: none; z-index: 0;
   }
 
   .hero::after {
@@ -125,12 +127,14 @@
     width: 500px; height: 500px; border-radius: 50%;
     border: 80px solid rgba(242,169,24,0.08);
     top: -120px; right: -120px; pointer-events: none;
+    z-index: 0;
   }
 
   .circle-deco {
     position: absolute; width: 300px; height: 300px; border-radius: 50%;
     border: 50px solid rgba(232,80,10,0.12);
     bottom: -80px; left: -60px; pointer-events: none;
+    z-index: 0;
   }
 
   .badge {
@@ -159,11 +163,7 @@
     animation: fadeUp 0.7s ease 0.2s both;
   }
 
-  .hero-emoji {
-    font-size: 3rem; margin-top: 28px;
-    position: relative; z-index: 1;
-    animation: float 3s ease-in-out infinite, fadeUp 0.7s ease 0.3s both;
-  }
+
 
   .section { padding: 80px 20px; max-width: 900px; margin: 0 auto; }
 
@@ -194,12 +194,6 @@
     position: relative; overflow: hidden;
   }
   .about-visual img { width: 100%; height: 100%; object-fit: cover; }
-  .about-visual:not(:has(img))::after {
-    content: 'FOTO PRODUK';
-    position: absolute; bottom: 16px; left: 0; right: 0;
-    text-align: center; font-size: 0.75rem; letter-spacing: 2px;
-    color: rgba(255,255,255,0.6); font-weight: 700;
-  }
 
   .wave-divider { height: 6px; position: relative; overflow: hidden; }
   .wave-divider::before {
@@ -231,16 +225,11 @@
     font-size: 4rem; position: relative; overflow: hidden;
   }
   .card-img img { width: 100%; height: 100%; object-fit: cover; }
-  .card-img-label {
-    position: absolute; bottom: 10px; left: 0; right: 0;
-    text-align: center; font-size: 0.65rem; letter-spacing: 2px;
-    color: rgba(255,255,255,0.55); font-weight: 700; text-transform: uppercase;
-  }
 
   .card-body { padding: 20px; }
   .card-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--cream); margin-bottom: 6px; }
   .card-desc { font-size: 0.85rem; color: rgba(255,248,238,0.6); line-height: 1.5; }
-  .card-price { margin-top: 12px; font-weight: 700; color: #f1efec ; font-size: 1rem; }
+  .card-price { margin-top: 12px; font-weight: 700; color: #f1efec; font-size: 1rem; }
 
   .cta-section { padding: 80px 20px; text-align: center; background: var(--cream); }
   .cta-section .section-title { margin-bottom: 12px; }
@@ -257,6 +246,32 @@
   .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
   .btn-wa { background: #25D366; color: #fff; }
   .btn-ig { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: #fff; }
+
+  /* MAP SECTION */
+  .map-section {
+    padding: 60px 20px 80px;
+    background: var(--cream);
+    text-align: center;
+  }
+  .map-section .section-label { color: var(--orange); }
+  .map-section .section-title { color: var(--brown); margin-bottom: 8px; }
+  .map-address {
+    font-size: 0.95rem; color: #7A4010;
+    margin-bottom: 28px; line-height: 1.6;
+  }
+  .map-address strong { color: var(--brown); }
+  .map-wrapper {
+    max-width: 720px; margin: 0 auto;
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 8px 32px rgba(194,24,91,0.15), 0 0 0 4px var(--gold);
+  }
+  .map-wrapper iframe {
+    width: 100%; height: 360px;
+    border: none; display: block;
+  }
+  @media(max-width: 600px) {
+    .map-wrapper iframe { height: 280px; }
+  }
 
   footer { background: rgb(194, 84, 161); color: rgba(255,248,238,0.5); text-align: center; padding: 28px 20px; font-size: 0.85rem; }
   footer strong { color: var(--gold); font-family: 'Playfair Display', serif; }
@@ -296,7 +311,6 @@
   <div class="badge">🌶️ Camilan Khas Indonesia</div>
   <h1 class="hero-logo">TAHU<span>HUHAH</span></h1>
   <p class="hero-tagline">Tahu isi ayam suwir berbumbu rempah — renyah di luar, lembut &amp; gurih di dalam.</p>
-  <div class="hero-emoji"></div>
 </section>
 
 <!-- ABOUT -->
@@ -337,7 +351,6 @@
       <div class="catalog-card reveal">
         <div class="card-img">
           <img src="asset/produk 1.jpeg" alt="produk tahu 1">
-          <span class="card-img-label">Foto Produk 1</span>
         </div>
         <div class="card-body">
           <div class="card-name">Tahu Huhah</div>
@@ -348,7 +361,6 @@
       <div class="catalog-card reveal">
         <div class="card-img">
           <img src="asset/produk 2.jpeg" alt="produk tahu 2">
-          <span class="card-img-label">Foto Produk 2</span>
         </div>
         <div class="card-body">
           <div class="card-name">Tahu Huhah</div>
@@ -359,7 +371,6 @@
       <div class="catalog-card reveal">
         <div class="card-img">
           <img src="asset/produk 3.jpeg" alt="produk tahu 3">
-          <span class="card-img-label">Foto Produk 3</span>
         </div>
         <div class="card-body">
           <div class="card-name">Tahu Huhah</div>
@@ -386,6 +397,21 @@
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       Instagram
     </a>
+  </div>
+</section>
+
+<!-- MAP SECTION -->
+<div class="wave-divider"></div>
+<section class="map-section reveal" id="lokasi">
+  <span class="section-label">Lokasi Kami</span>
+  <h2 class="section-title">Temukan Kami Di Sini</h2>
+  <p class="map-address">
+    <strong>Desa Srobyong RT 05 RW 01</strong><br>
+    Kec. Mlonggo, Kab. Jepara, Jawa Tengah
+  </p>
+  <div class="map-wrapper">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.9875428925952!2d110.71662939999999!3d-6.523255600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e71234759cc77c9%3A0x87c75ada86bf9c3e!2sJati%20Payung%20Garage!5e0!3m2!1sid!2sid!4v1775706401128!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
   </div>
 </section>
 
