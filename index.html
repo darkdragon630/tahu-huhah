@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>TAHU HUHAH – Tahu Isi Ayam Suwir</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="asset/logo tahu huhah.jpeg" type="image/x-icon">
+<style>
+  :root {
+    --cream: #FFF8EE;
+    --orange: #E8500A;
+    --brown: #C2185B;
+    --gold: #F2A918;
+    --text: #2E1503;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--cream);
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(230, 47, 181, 0.97);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    height: 62px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+    gap: 8px;
+  }
+
+  .nav-brand {
+    display: flex; align-items: center; gap: 10px;
+    flex-shrink: 0; min-width: 0;
+  }
+
+  .nav-brand img {
+    width: 42px; height: 42px; border-radius: 9px;
+    object-fit: cover; border: 2px solid var(--gold);
+    flex-shrink: 0;
+  }
+
+  .nav-brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; color: var(--cream);
+    font-size: 1rem; letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .nav-menu {
+    list-style: none;
+    display: flex; align-items: center;
+    gap: 0; margin: 0; padding: 0;
+    flex-shrink: 0;
+  }
+
+  .nav-link {
+    display: block;
+    color: rgba(255,248,238,0.8);
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    white-space: nowrap;
+    position: relative;
+    font-size: 0.88rem;
+    padding: 6px 11px;
+    border-radius: 6px;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .nav-link:hover { color: var(--gold); background: rgba(242,169,24,0.12); }
+  .nav-link.active { color: var(--gold); }
+  .nav-link.active::after {
+    content: '';
+    position: absolute; bottom: 0; left: 11px; right: 11px;
+    height: 2px; background: var(--gold); border-radius: 2px;
+  }
+
+  @media (max-width: 720px) {
+    nav { padding: 0 16px; }
+    .nav-link { font-size: 0.8rem; padding: 5px 8px; }
+    .nav-brand-name { font-size: 0.88rem; }
+    .nav-brand img { width: 36px; height: 36px; }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 0 10px; height: 56px; }
+    .nav-brand-name { display: none; }
+    .nav-brand img { width: 34px; height: 34px; }
+    .nav-link { font-size: 0.75rem; padding: 5px 7px; }
+    .nav-link.active::after { left: 7px; right: 7px; }
+  }
+
+  @media (max-width: 340px) {
+    .nav-link { font-size: 0.68rem; padding: 4px 5px; }
+  }
+
+  .hero {
+    min-height: 80vh;
+    background: var(--brown);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 100px 20px 60px;
+  }
+
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    pointer-events: none; opacity: 0.4;
+  }
+
+  .hero::after {
+    content: ''; position: absolute;
+    width: 500px; height: 500px; border-radius: 50%;
+    border: 80px solid rgba(242,169,24,0.08);
+    top: -120px; right: -120px; pointer-events: none;
+  }
+
+  .circle-deco {
+    position: absolute; width: 300px; height: 300px; border-radius: 50%;
+    border: 50px solid rgba(232,80,10,0.12);
+    bottom: -80px; left: -60px; pointer-events: none;
+  }
+
+  .badge {
+    background: var(--gold); color: var(--brown);
+    font-weight: 700; font-size: 0.75rem; letter-spacing: 3px;
+    text-transform: uppercase; padding: 6px 18px; border-radius: 100px;
+    margin-bottom: 24px; position: relative; z-index: 1;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 14vw, 7rem); font-weight: 900;
+    color: var(--cream); line-height: 0.9; text-align: center;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.7s ease 0.1s both;
+    text-shadow: 0 4px 32px rgba(0,0,0,0.3);
+  }
+  .hero-logo span { color: var(--gold); display: block; }
+
+  .hero-tagline {
+    margin-top: 20px; font-size: clamp(0.9rem, 3vw, 1.1rem);
+    color: rgba(255,248,238,0.75); text-align: center;
+    max-width: 380px; line-height: 1.6;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.7s ease 0.2s both;
+  }
+
+  .hero-emoji {
+    font-size: 3rem; margin-top: 28px;
+    position: relative; z-index: 1;
+    animation: float 3s ease-in-out infinite, fadeUp 0.7s ease 0.3s both;
+  }
+
+  .section { padding: 80px 20px; max-width: 900px; margin: 0 auto; }
+
+  .section-label {
+    display: inline-block; font-size: 0.72rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--orange); font-weight: 700; margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3rem); font-weight: 700;
+    color: var(--brown); line-height: 1.2; margin-bottom: 24px;
+  }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  @media(max-width: 600px) { .about-grid { grid-template-columns: 1fr; } }
+
+  .about-text { font-size: 1.05rem; line-height: 1.8; color: #4A2200; }
+
+  .feature-list { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 12px; }
+  .feature-list li { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.95rem; }
+  .feature-list li::before { content: '✦'; color: var(--gold); font-size: 0.8rem; }
+
+  .about-visual {
+    background: var(--orange); border-radius: 24px; aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 6rem; box-shadow: 8px 8px 0 var(--brown);
+    position: relative; overflow: hidden;
+  }
+  .about-visual img { width: 100%; height: 100%; object-fit: cover; }
+  .about-visual:not(:has(img))::after {
+    content: 'FOTO PRODUK';
+    position: absolute; bottom: 16px; left: 0; right: 0;
+    text-align: center; font-size: 0.75rem; letter-spacing: 2px;
+    color: rgba(255,255,255,0.6); font-weight: 700;
+  }
+
+  .wave-divider { height: 6px; position: relative; overflow: hidden; }
+  .wave-divider::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(90deg, var(--gold) 0, var(--gold) 40px, var(--orange) 40px, var(--orange) 80px);
+    opacity: 0.8;
+  }
+
+  .catalog-bg { background: var(--orange); padding: 80px 20px; }
+  .catalog-inner { max-width: 960px; margin: 0 auto; }
+  .catalog-header { text-align: center; margin-bottom: 48px; }
+  .catalog-header .section-label { color: var(--gold); }
+  .catalog-header .section-title { color: var(--cream); }
+
+  .catalog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media(max-width: 600px) { .catalog-grid { grid-template-columns: 1fr; } }
+
+  .catalog-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(242,169,24,0.25);
+    border-radius: 20px; overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;
+  }
+  .catalog-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+
+  .card-img {
+    width: 100%; aspect-ratio: 1;
+    background: linear-gradient(135deg, var(--orange) 0%, var(--gold) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem; position: relative; overflow: hidden;
+  }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; }
+  .card-img-label {
+    position: absolute; bottom: 10px; left: 0; right: 0;
+    text-align: center; font-size: 0.65rem; letter-spacing: 2px;
+    color: rgba(255,255,255,0.55); font-weight: 700; text-transform: uppercase;
+  }
+
+  .card-body { padding: 20px; }
+  .card-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--cream); margin-bottom: 6px; }
+  .card-desc { font-size: 0.85rem; color: rgba(255,248,238,0.6); line-height: 1.5; }
+  .card-price { margin-top: 12px; font-weight: 700; color: #f1efec ; font-size: 1rem; }
+
+  .cta-section { padding: 80px 20px; text-align: center; background: var(--cream); }
+  .cta-section .section-title { margin-bottom: 12px; }
+  .cta-sub { color: #7A4010; font-size: 1rem; margin-bottom: 36px; }
+
+  .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 32px; border-radius: 100px;
+    font-weight: 700; font-size: 1rem; text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-family: 'Nunito', sans-serif;
+  }
+  .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+  .btn-wa { background: #25D366; color: #fff; }
+  .btn-ig { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: #fff; }
+
+  footer { background: rgb(194, 84, 161); color: rgba(255,248,238,0.5); text-align: center; padding: 28px 20px; font-size: 0.85rem; }
+  footer strong { color: var(--gold); font-family: 'Playfair Display', serif; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+  }
+
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-brand">
+    <img src="asset/logo tahu huhah.jpeg" alt="Logo Tahu Huhah">
+    <span class="nav-brand-name">TAHU HUHAH</span>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="#beranda" class="nav-link active">Beranda</a></li>
+    <li><a href="#katalog" class="nav-link">Katalog</a></li>
+    <li><a href="#tentang" class="nav-link">Tentang</a></li>
+    <li><a href="#kontak" class="nav-link">Kontak</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="beranda">
+  <div class="circle-deco"></div>
+  <div class="badge">🌶️ Camilan Khas Indonesia</div>
+  <h1 class="hero-logo">TAHU<span>HUHAH</span></h1>
+  <p class="hero-tagline">Tahu isi ayam suwir berbumbu rempah — renyah di luar, lembut &amp; gurih di dalam.</p>
+  <div class="hero-emoji"></div>
+</section>
+
+<!-- ABOUT -->
+<div class="wave-divider"></div>
+<section class="section reveal" id="tentang">
+  <div class="about-grid">
+    <div>
+      <span class="section-label">Tentang Produk</span>
+      <h2 class="section-title">Bukan Tahu Isi Biasa</h2>
+      <p class="about-text">
+        TAHU HUHAH adalah camilan gorengan khas Indonesia yang berbeda dari tahu isi sayur biasa.
+        Tahu pilihan diisi dengan <strong>ayam suwir berbumbu rempah pilihan</strong>,
+        lalu digoreng hingga kulit luar keemasan dan renyah, sementara isinya tetap lembut dan kaya rasa.
+      </p>
+      <ul class="feature-list">
+        <li>Ayam suwir bumbu rempah autentik</li>
+        <li>Kulit tahu renyah sempurna</li>
+        <li>Tanpa pengawet, dibuat segar</li>
+        <li>Cocok buat camilan &amp; lauk</li>
+      </ul>
+    </div>
+    <div class="about-visual">
+      <img src="asset/produk 1.jpeg" alt="Produk Tahu Huhah">
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<div class="wave-divider"></div>
+<div class="catalog-bg" id="katalog">
+  <div class="catalog-inner">
+    <div class="catalog-header reveal">
+      <span class="section-label">Menu Kami</span>
+      <h2 class="section-title">Pilihan Favorit</h2>
+    </div>
+    <div class="catalog-grid">
+
+      <div class="catalog-card reveal">
+        <div class="card-img">
+          <img src="asset/produk 1.jpeg" alt="produk tahu 1">
+          <span class="card-img-label">Foto Produk 1</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Tahu Huhah Original</div>
+          <div class="card-desc">Ayam suwir bumbu kuning klasik, gurih dan lembut di dalam.</div>
+          <div class="card-price">Rp 5.000 / pcs</div>
+        </div>
+      </div>
+
+      <div class="catalog-card reveal">
+        <div class="card-img">
+          <img src="asset/produk 2.jpeg" alt="produk tahu 2">
+          <span class="card-img-label">Foto Produk 2</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Tahu Huhah Pedas</div>
+          <div class="card-desc">Bumbu cabai rawit extra, bikin nagih buat pencinta pedas.</div>
+          <div class="card-price">Rp 5.000 / pcs</div>
+        </div>
+      </div>
+
+      <div class="catalog-card reveal">
+        <div class="card-img">
+          <img src="asset/produk 3.jpeg" alt="produk tahu 3">
+          <span class="card-img-label">Foto Produk 3</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Tahu Huhah Kemangi</div>
+          <div class="card-desc">Perpaduan ayam suwir dengan aroma kemangi segar yang khas.</div>
+          <div class="card-price">Rp 5.000 / pcs</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="wave-divider"></div>
+<section class="cta-section reveal" id="kontak">
+  <span class="section-label">Pesan Sekarang</span>
+  <h2 class="section-title">Mau Cobain?</h2>
+  <p class="cta-sub">Hubungi kami langsung atau follow Instagram kami untuk update promo terbaru!</p>
+  <div class="btn-group">
+    <a href="https://wa.me/62895382622885" class="btn btn-wa" target="_blank">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="https://www.instagram.com/tahu_huhah9?utm_source=qr&igsh=cWttd2NqNHc2eXR3" class="btn btn-ig" target="_blank">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Instagram
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 <strong>TAHU HUHAH</strong> — Camilan Gorengan Khas Indonesia / Dibuat oleh Luna
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
